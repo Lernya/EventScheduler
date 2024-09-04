@@ -1,16 +1,46 @@
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import AddEvent from "./pages/AddEvent";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import MainLayout from "./layouts/MainLayout";
+import { useState } from "react";
+
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  return (
-    <div id="app">
+  // Define Routes
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<SignIn />} />
+        <Route path="registration" element={<SignUp />} />
+        {/* to be developed Protected Rout */}
 
-      <div title="TestDIV" className="text-center">
-        <h1 title="TailwindCSS" className='bg-amber-300 p-4 text-6xl'>Event Scheduler</h1>
-        <h2 title="TailwindCSS" className='text-3xl m-2'>Terminplaner</h2>
-        <button className="btn btn-primary">Button mit DaisyUI</button>
-      </div>
+      </Route>
+    )
+  );
 
-    </div>
-  )
+  return <RouterProvider router={router} />;
+
+  // Test div
+  // return (
+  //   <div id="app">
+
+  //     <div title="TestDIV" className="text-center">
+  //       <h1 title="TailwindCSS" className='bg-amber-300 p-4 text-6xl'>Event Scheduler</h1>
+  //       <h2 title="TailwindCSS" className='text-3xl m-2'>Terminplaner</h2>
+  //       <button className="btn btn-primary">Button mit DaisyUI</button>
+  //     </div>
+
+  //   </div>
+  // )
 }
 
-export default App
+export default App;
