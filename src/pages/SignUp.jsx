@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { registrate } from "../utils/network";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [registration, setRegistration] = useState({
+  const navigate = useNavigate();
+  const [regData, setRegData] = useState({
     email: "",
     password: "",
   });
@@ -10,23 +12,21 @@ const SignUp = () => {
   // Handle input change for both email and password
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setRegistration((prev) => ({
+    setRegData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Here you can add checks for the input data, like validating the email format, password length, etc.
 
-    console.log("Registration Info:", registration);
-
-    const res = registrate(registration);
+    const res = await registrate(regData);
     if (res) {
-      // Redirect the user
+      navigate("/login");
     }
   };
 
@@ -47,6 +47,7 @@ const SignUp = () => {
           name="email"
           className="grow"
           placeholder="Email"
+          value={regData.email}
           onChange={handleChange}
         />
       </label>
@@ -67,6 +68,7 @@ const SignUp = () => {
           type="password"
           name="password"
           className="grow"
+          value={regData.password}
           onChange={handleChange}
         />
       </label>

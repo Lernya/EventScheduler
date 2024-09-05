@@ -9,11 +9,9 @@ import AddEvent from "./pages/AddEvent";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import MainLayout from "./layouts/MainLayout";
-import { useState } from "react";
+import ProtectedLayout from "./layouts/ProtectedLayout";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   // Define Routes
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,8 +19,9 @@ function App() {
         <Route index element={<Home />} />
         <Route path="login" element={<SignIn />} />
         <Route path="registration" element={<SignUp />} />
-        {/* to be developed Protected Rout */}
-
+        <Route path="protected" element={<ProtectedLayout />}>
+          <Route index element={<AddEvent />} />
+        </Route>
       </Route>
     )
   );

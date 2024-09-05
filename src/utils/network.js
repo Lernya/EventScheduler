@@ -1,7 +1,6 @@
 const registrate = async (regData) => {
   try {
-    // Make a POST request with the registration data
-    const response = await fetch("http://localhost:3001/api/users/", {
+    const response = await fetch(import.meta.env.VITE_API_URL + "/api/users/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,27 +19,26 @@ const registrate = async (regData) => {
     }
   } catch (error) {
     console.error("Error occurred during registration:", error);
-    // Handle the error, display a message to the user, etc.
+    return false;
   }
 };
 
 const authorize = async (authData) => {
   try {
-    // Make a POST request with the registration data
-    const response = await fetch("http://localhost:3001/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(authData),
-    });
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(authData),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
-      console.log("Authorization successful:", data);
-
-      // save token in local storage
-      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("token", data.token);
       return true;
     } else {
       const errorData = await response.json();
@@ -49,7 +47,7 @@ const authorize = async (authData) => {
     }
   } catch (error) {
     console.error("Error occurred during authorization:", error);
-    // Handle the error, display a message to the user, etc.
+    return false;
   }
 };
 
