@@ -1,32 +1,30 @@
 import { useState } from "react";
 import { authorize } from "../utils/network";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-  const [authorization, setAuthorization] = useState({
+  const navigate = useNavigate();
+  const [authData, setAuthData] = useState({
     email: "",
     password: "",
   });
 
-  // Handle input change for both email and password
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setAuthorization((prev) => ({
+    setAuthData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Here you can add checks for the input data, like validating the email format, password length, etc.
+    // validating the email format, password
 
-    console.log("Authorisation Info:", authorization);
-
-    const res = authorize(authorization);
+    const res = await authorize(authData);
     if (res) {
-      // Redirect the user
+      navigate("/protected");
     }
   };
 
@@ -47,6 +45,7 @@ const SignIn = () => {
           name="email"
           className="grow"
           placeholder="Email"
+          value={authData.email}
           onChange={handleChange}
         />
       </label>
@@ -67,9 +66,13 @@ const SignIn = () => {
           type="password"
           name="password"
           className="grow"
+          value={authData.password}
           onChange={handleChange}
         />
       </label>
+      <Link to="/registration" className="link link-info">
+        Registrate
+      </Link>
       <button className="btn btn-active" onClick={handleSubmit}>
         Sign In
       </button>
