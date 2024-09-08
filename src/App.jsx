@@ -1,23 +1,36 @@
-import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
 import EventDetails from './pages/EventDetails';
-// import AComponent from './components/AComponent';
+import AddEvent from "./pages/AddEvent";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import MainLayout from "./layouts/MainLayout";
+import ProtectedLayout from "./layouts/ProtectedLayout";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<MainLayout />}>
-      <Route index element={<Home />} />
-      <Route path='event' element={<EventDetails />} />
-    </Route>
-  )
-);
 
 function App() {
-  return <RouterProvider router={router} />;
 
-  // return (
-  //   <div id="app">
+    // Define Routes
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path='event' element={<EventDetails />} />
+        <Route path="login" element={<SignIn />} />
+        <Route path="registration" element={<SignUp />} />
+        <Route path="protected" element={<ProtectedLayout />}>
+          <Route index element={<AddEvent />} />
+        </Route>
+      </Route>
+    )
+  );
+
+  return <RouterProvider router={router} />;
 
   //     <div title="TestDIV" className="text-center">
   //       <h1 title="TailwindCSS" className='bg-amber-300 p-4 text-6xl'>Event Scheduler</h1>
@@ -29,5 +42,4 @@ function App() {
   // )
 }
 
-export default App
-
+export default App;

@@ -1,25 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header>
-      <nav>
-        <ul className='flex gap-3'>
+    <div id="navbar" className="navbar bg-base-300">
+      <div className="flex-1">
+        <Link to="/">
+          <button className="btn btn-ghost text-xl">Events</button>
+        </Link>
+      </div>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1">
           <li>
-            <NavLink to='/'>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='/event'>Event</NavLink>
-          </li>
-          <li>
-            <NavLink to='/signup'>Sign Up</NavLink>
-          </li>
-          <li>
-            <NavLink to='/signin'>Sign In</NavLink>
+            <Link to="/">Home</Link>
           </li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </div>
   );
 };
 
