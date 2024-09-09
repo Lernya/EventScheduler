@@ -23,7 +23,6 @@ const SignUp = () => {
     }));
   };
 
-
   const validate = () => {
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
