@@ -70,6 +70,9 @@ const SignIn = () => {
           onChange={handleChange}
         />
       </label>
+      <Link to="/registration" className="link link-info">
+        Registrate
+      </Link>
       <button className="btn btn-active" onClick={handleSubmit}>
         Sign In
       </button>
