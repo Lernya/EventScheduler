@@ -76,6 +76,12 @@ const SignIn = () => {
       <button className="btn btn-active" onClick={handleSubmit}>
         Sign In
       </button>
+      <p>
+        <span>Don't have an account? </span>
+        <Link to="/registration" className="link link-info">
+          Sign up
+        </Link>
+      </p>
     </form>
   );
 };
