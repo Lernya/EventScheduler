@@ -1,16 +1,36 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="garden">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/eventscheduler.css">
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>" />
-    <title>Event Scheduler · Terminplaner</title>
+    <title>Event Scheduler · Veranstaltungsplaner</title>
+    
+    <style>
+      #noscriptblock {
+        background-color: slateblue; 
+        padding: 6rem 2rem 9rem 2rem; 
+        text-align: center;
+      }
+        h1.noscriptblock { color:aquamarine; } 
+      #jsconfig { margin-top:5rem;
+             }
+    </style>
   </head>
   <body>
-    <!-- <h1>Event Scheduler <br>Terminplaner</h1> -->
     <div id="root"></div>
+    <!-- Classic CSS funktioniert auch ohne JavaScript -->
+    <noscript><div id="noscriptblock">
+    <h1 class="noscriptblock">Veranstaltungsplaner <br> Event Scheduler <br>Terminplaner</h1>
+
+    <div id="jsconfig">
+      <p>Diese App braucht JavaScript für die volle Funktionalität. <br>
+      <p>Die Einstellungen, um JavaScript zu aktivieren, kannst du in deinem Browser ändern.</p>
+    </div>
+    
+    </div></noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
