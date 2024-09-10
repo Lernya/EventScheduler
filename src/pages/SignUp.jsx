@@ -50,7 +50,6 @@ const SignUp = () => {
     e.preventDefault();
 
     setErrors({
-      isValid: true,
       ok: true,
       emailError: "",
       passError: "",
@@ -71,7 +70,7 @@ const SignUp = () => {
 
   return (
     <form className="card flex flex-col gap-6 m-auto p-8 w-96 bg-base-100 shadow-xl">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col">
         <label className="input input-bordered flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +92,7 @@ const SignUp = () => {
         </label>
         <p className="text-red-500">{errors.emailError}</p>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col">
         <label className="input input-bordered flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -116,8 +115,10 @@ const SignUp = () => {
           />
         </label>
         <p className="text-red-500">{errors.passError}</p>
+        {!errors.ok && (
+          <p className="text-red-500  pt-4">Registration failed!</p>
+        )}
       </div>
-      {!errors.ok && <p className="text-red-500">Registration failed!</p>}
       <button className="btn btn-active" onClick={handleSubmit}>
         Sign Up
       </button>
