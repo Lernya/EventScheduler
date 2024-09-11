@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -6,8 +7,7 @@ const Home = () => {
   const [events, setEvents] = useState(null);
   console.log("Events:", events);
 
-  // fuer Variante mit Controller
-  // const [status, setStatus] = useState('loading'); // "loading", "success", "error"
+  const [status, setStatus] = useState('loading'); // "loading", "success", "error"
 
 
   useEffect(() => {
@@ -22,10 +22,10 @@ const Home = () => {
         console.log("Check, fetchEvents");
         
         
-        const res = await fetch('http://localhost:3001/api/events');   // URL mit http, nicht https!! :-/
-        // fuer Variante mit Controller
-        // setStatus('loading');
-        // const response = await fetch('https://localhost:3001/api/events/{id}', { signal: controller.signal });
+        const res = await fetch(import.meta.env.VITE_API_URL + '/api/events');   // URL mit http, nicht https!! :-/
+
+        setStatus('loading');
+        // const response = await fetch('import.meta.env.VITE_API_URL + "/api/events/{id}', { signal: controller.signal });
 
         // Klappt die Verbindung? Gibt es "response"?
         if (!res.ok) throw new Error('failed to fetch events');
@@ -33,17 +33,13 @@ const Home = () => {
         const data = await res.json();
         console.log("data-Variable:", data); // ok
        
-        // Variante mit Controller
-        // setStatus('success');
-
-        // Schritt 2: Mit Daten aus der Variablen den State von events aktualisieren (hier von leer auf Inhalt)
-        // WICHTIG: HIER ist die Stelle, wo das "foo.results" hinkommt, das bei der REST-API im Objekt untergeordnet ist!!!!
+        setStatus('success');
         setEvents(data.results);
-        console.log(events);
+        console.log("Ergebnis in events", events);
 
       } catch (error) {
-      console.error(error);
-        // setStatus('error');
+        console.error(error);
+        setStatus('error');
       }
     };
     fetchEvents();
@@ -53,7 +49,7 @@ const Home = () => {
 
   }, []);
 
-  // Okay, also fetchen geht. Bis hierhin. Nur die Ausgabe fehlt.
+  // Okay, also fetchen geht. Bis hierhin. Nun die Ausgabe...
   // return ();
   // darein Schritt1: umschließendes Element //  <div id="events" title="Home"></div>
 
@@ -68,22 +64,25 @@ const Home = () => {
                   </figure> 
             </div>
             <div className="pl-10 text-center">
-              {/* <img className="h-40" src="woman-technologist_1f469-200d-1f4bb.png" alt='Ein Bild' /> */}
               <img className="h-40" src="calendar_1f4c5.png" alt='Ein Bild' />
             </div>
 
                   {events && events.length > 0 ? (
-      <div className='p-8 mx-auto'>
-        <ul className="mt-10">
-          {events.map((event) => (
-            <li className='px-8 py-4' key={event.id}>
-              <p><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
-              <h3 className='font-extrabold text-xl'>{event.title}</h3>
-              <p>{event.description}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+            <div className='p-8 mx-auto'>
+             <ul className="mt-10">
+                {events.map((event) => (
+                  <Link to={`event/${event.id}`} key={'event-' + event.id} className='card bg-base-100 w-96 shadow-xl my-1'>
+                                 
+                  <li className='px-8 py-4'>
+                    <p className='text-right'><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
+                    <p className='text-right'>{event.location}</p>
+                    <h3 className='font-extrabold text-xl'>{event.title}</h3>
+                    <p>{event.description}</p>
+                 </li>
+                 </Link>
+               ))}
+             </ul>
+           </div>
    
     ) : (
       <p>Keine Events vorhanden.</p>
@@ -91,9 +90,6 @@ const Home = () => {
          
   </div>
  );
-
-  
-  };
-  
-  export default Home;
+};
+export default Home;
   
