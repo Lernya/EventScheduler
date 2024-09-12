@@ -17,3 +17,23 @@
   }
   
 
+  .btn-primary {
+    background-color: #0029A3;
+    border:1px solid #00258a;
+  }
+  .btn-primary:hover {
+    background-color: #058a0a;
+    border:1px solid #047008;
+  }
+
+  button#event-to-start {
+   margin-top:3rem; 
+  }
+
+  div#event {
+    margin-top:3rem;
+  }
+
+  #noscript {
+    background-image:url(/d2409-eventscheduler/git-EventScheduler/public/repository-open-graph-tuerkisblau2408a.png)!important;
+  }

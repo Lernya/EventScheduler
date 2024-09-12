@@ -17,13 +17,26 @@
     <title>Event Scheduler · Veranstaltungsplaner</title>
     
     <style>
+      
       #noscriptblock {
-        background-color: slateblue; 
+        background-color: #0029A3; 
+        background-image: url(public/repository-open-graph-tuerkisblau2408a.png);
         padding: 6rem 2rem 9rem 2rem; 
         text-align: center;
       }
+
+      #kalendericon {
+        margin-top:3rem;
+      }
         h1.noscriptblock { color:aquamarine; } 
-      #jsconfig { margin-top:5rem;
+      #jsconfig { 
+        margin-top:3rem;
+        padding:3rem;
+        backdrop-filter: blur(var(--glass-blur, 40px));
+        background-image: linear-gradient( 135deg, rgb(255 255 255 / var(--glass-opacity, 60%)) 0%, rgb(0 0 0 / 0%) 100% ), linear-gradient( var(--glass-reflex-degree, 100deg), rgb(255 255 255 / var(--glass-reflex-opacity, 10%)) 25%, rgb(0 0 0 / 0%) 25% );
+        background-color: rgb(255,255,255 /0.6) ;
+        
+
              }
     </style>
   </head>
@@ -32,8 +45,8 @@
     <!-- Classic CSS funktioniert auch ohne JavaScript -->
     <noscript><div id="noscriptblock">
     <h1 class="noscriptblock">Veranstaltungsplaner <br> Event Scheduler <br>Terminplaner</h1>
-
-    <div id="jsconfig">📅
+    <div id="kalendericon">📅</div>
+    <div id="jsconfig">
       <p>Diese App braucht JavaScript für ihre volle Funktionalität. <br>
       <p>Die Einstellungen, um JavaScript zu aktivieren, kannst du in deinem Browser ändern.</p>
     </div>

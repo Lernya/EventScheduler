@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';     // =
 import { useParams } from 'react-router-dom';   // fuer id als Parameter
 import { Link } from 'react-router-dom';
-
+import Header2 from './../components/Header2'; 
 
 const EventDetails = () => {
 
@@ -44,25 +44,28 @@ const { eventid } = useParams();
   }, [eventid]);
 console.log(event);
     return (
+      <>
+   
+      <Header2 />
       <div id="event">
         {/* <h1>Event</h1> */}
         {/* Momentan default w-96 maximum. siehe Tailwind-Doku bei max-width  */}
         {event ? (
-        <div class="card glass w-96 mx-auto">
+        <div className="card glass w-96 mx-auto">
           <figure>
             <img
               src="repository-open-graph-tuerkisblau2408a.png"
               alt="" />
             </figure>
-            <div class="card-body">
-              <h2 class="card-title">{event.id}</h2>
+            <div className="card-body">
+              <h2 className="card-title">{event.id}</h2>
               <p className='text-right'><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
                     <p className='text-right'>{event.location}</p>
                     <h3 className='font-extrabold text-xl'>{event.title}</h3>
                     <p>{event.description}</p>
-              <div class="card-actions justify-end">
+              <div className="card-actions justify-end">
               <Link to={`/`}>
-              <button class="btn btn-primary">Zur Übersicht</button>
+              <button id="event-to-start" className="btn btn-primary">Zur Übersicht</button>
               </Link>
             </div>
           </div>
@@ -71,6 +74,7 @@ console.log(event);
           <p>Keine Eventdetails vorhanden.</p>
         )}
      </div>
+     </>
   );
 };
   
