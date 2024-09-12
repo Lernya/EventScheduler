@@ -55,40 +55,56 @@ const Home = () => {
 
 
  return (
-  <div id="events" title="Home" className='mx-auto'>
-    { // <!-- Hier dann die Schleife --> 
-    } 
-            <div className=' bg-base-100 image-full w-auto h-10 shadow-xl'>
-                   <figure>
-                    <img className="h-60 w-full" src="repository-open-graph-tuerkisblau2408a.png" alt='Ein Bild' />
-                  </figure> 
-            </div>
-            <div className="pl-10 text-center">
-              <img className="h-40" src="calendar_1f4c5.png" alt='Ein Bild' />
-            </div>
+   <div id="events" title="Home" className="mx-auto">
+     {
+       // <!-- Hier dann die Schleife -->
+     }
+     <div className=" bg-base-100 image-full w-auto h-10 shadow-xl">
+       <figure>
+         <img
+           className="h-60 w-full"
+           src="repository-open-graph-tuerkisblau2408a.png"
+           alt="Ein Bild"
+         />
+       </figure>
+     </div>
+     <div className="pl-10 text-center">
+       <img className="h-40" src="calendar_1f4c5.png" alt="Ein Bild" />
+     </div>
 
-                  {events && events.length > 0 ? (
-            <div className='p-8 flex justify-center'>
-             <ul className="mt-10 flex flex-col">
-                {events.map((event) => (
-                  <Link to={`event/${event.id}`} key={'event-' + event.id} className='card bg-base-100 w-96 shadow-xl my-1 hover:bg-white'>
-                                 
-                  <li className='px-8 py-4'>
-                    <p className='text-right'>Datum: <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
-                    <p className='text-right'>{event.location}</p>
-                    <h3 className='font-extrabold text-xl'>{event.title}</h3>
-                    <p>{event.description}</p>
-                 </li>
-                 </Link>
-               ))}
-             </ul>
-           </div>
-   
-    ) : (
-      <p>Keine Events vorhanden.</p>
-    )}
-         
-  </div>
+     {events && events.length > 0 ? (
+       <div className="p-8 flex justify-center">
+         <ul className="mt-10 flex flex-col">
+           {events.map((event) => (
+             <Link
+               to={`event/${event.id}`}
+               key={"event-" + event.id}
+               className="card bg-base-100 w-96 shadow-xl my-1 hover:bg-white"
+             >
+               <li className="px-8 py-4">
+                 <p className="text-right">
+                   Datum:{" "}
+                   <strong>{new Date(event.date).toLocaleDateString()}</strong>
+                 </p>
+                 <p className="text-right">{event.location}</p>
+                 <h3 className="font-extrabold text-xl">{event.title}</h3>
+                 <p>{event.description}</p>
+               </li>
+             </Link>
+           ))}
+         </ul>
+       </div>
+     ) : (
+       <p>Keine Events vorhanden.</p>
+     )}
+
+     // Add Event Button
+     <Link to="/protected">
+       <button className="fixed bottom-8 right-8 btn btn-active btn-neutral">
+         + Add Event
+       </button>
+     </Link>
+   </div>
  );
 };
 export default Home;
