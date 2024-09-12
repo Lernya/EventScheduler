@@ -15,11 +15,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <Link to="/protected">
-        <button className="fixed bottom-8 right-8 btn btn-active btn-neutral">
-          + Add Event
-        </button>
-      </Link>
     </div>
   );
 };
