@@ -55,7 +55,7 @@ const Home = () => {
 
 
  return (
-  <div id="events" title="Home">
+  <div id="events" title="Home" className='mx-auto'>
     { // <!-- Hier dann die Schleife --> 
     } 
             <div className=' bg-base-100 image-full w-auto h-10 shadow-xl'>
@@ -68,13 +68,13 @@ const Home = () => {
             </div>
 
                   {events && events.length > 0 ? (
-            <div className='p-8 mx-auto'>
-             <ul className="mt-10">
+            <div className='p-8 flex justify-center'>
+             <ul className="mt-10 flex flex-col">
                 {events.map((event) => (
-                  <Link to={`event/${event.id}`} key={'event-' + event.id} className='card bg-base-100 w-96 shadow-xl my-1'>
+                  <Link to={`event/${event.id}`} key={'event-' + event.id} className='card bg-base-100 w-96 shadow-xl my-1 hover:bg-white'>
                                  
                   <li className='px-8 py-4'>
-                    <p className='text-right'><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
+                    <p className='text-right'>Datum: <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
                     <p className='text-right'>{event.location}</p>
                     <h3 className='font-extrabold text-xl'>{event.title}</h3>
                     <p>{event.description}</p>
