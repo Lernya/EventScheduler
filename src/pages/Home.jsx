@@ -61,28 +61,39 @@ const Home = () => {
     } 
             <HeaderStart />
 
-                  {events && events.length > 0 ? (
-            <div className='p-8 flex justify-center'>
-             <ul className="mt-10 flex flex-col">
-                {events.map((event) => (
-                  <Link to={`event/${event.id}`} key={'event-' + event.id} className='card bg-base-100 w-96 shadow-xl my-1 hover:bg-white'>
-                                 
-                  <li className='px-8 py-4'>
-                    <p className='text-right'>Datum: <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
-                    <p className='text-right'>{event.location}</p>
-                    <h3 className='font-extrabold text-xl'>{event.title}</h3>
-                    <p>{event.description}</p>
-                 </li>
-                 </Link>
-               ))}
-             </ul>
-           </div>
-   
-    ) : (
-      <p>Keine Events vorhanden.</p>
-    )}
-         
-  </div>
+     {events && events.length > 0 ? (
+       <div className="p-8 flex justify-center">
+         <ul className="mt-10 flex flex-col">
+           {events.map((event) => (
+             <Link
+               to={`event/${event.id}`}
+               key={"event-" + event.id}
+               className="card bg-base-100 w-96 shadow-xl my-1 hover:bg-white"
+             >
+               <li className="px-8 py-4">
+                 <p className="text-right">
+                   Datum:{" "}
+                   <strong>{new Date(event.date).toLocaleDateString()}</strong>
+                 </p>
+                 <p className="text-right">{event.location}</p>
+                 <h3 className="font-extrabold text-xl">{event.title}</h3>
+                 <p>{event.description}</p>
+               </li>
+             </Link>
+           ))}
+         </ul>
+       </div>
+     ) : (
+       <p>Keine Events vorhanden.</p>
+     )}
+
+     // Add Event Button
+     <Link to="/protected">
+       <button className="fixed bottom-8 right-8 btn btn-active btn-neutral">
+         + Add Event
+       </button>
+     </Link>
+   </div>
  );
 };
 export default Home;
