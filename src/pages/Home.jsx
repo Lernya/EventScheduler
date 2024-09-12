@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import HeaderStart from './../components/HeaderStart'; 
 
 const Home = () => {
 
@@ -49,28 +50,16 @@ const Home = () => {
 
   }, []);
 
-  // Okay, also fetchen geht. Bis hierhin. Nun die Ausgabe...
+  // Nach dem erfolgreichen Fetchen nun die Ausgabe...
   // return ();
   // darein Schritt1: umschließendes Element //  <div id="events" title="Home"></div>
-
+  // dort dann Schritt2: Schleife mit conditional rendering nicht vergessen! Bei api/events mit Array-Längenabfrage: { events && events.length > 0 ? () : () }  Bei api/events${eventid} ohne Längenabfrage, Ergebnis ist kein Array
 
  return (
-   <div id="events" title="Home" className="mx-auto">
-     {
-       // <!-- Hier dann die Schleife -->
-     }
-     <div className=" bg-base-100 image-full w-auto h-10 shadow-xl">
-       <figure>
-         <img
-           className="h-60 w-full"
-           src="repository-open-graph-tuerkisblau2408a.png"
-           alt="Ein Bild"
-         />
-       </figure>
-     </div>
-     <div className="pl-10 text-center">
-       <img className="h-40" src="calendar_1f4c5.png" alt="Ein Bild" />
-     </div>
+  <div id="events" title="Home" className='mx-auto'>
+    { // <!-- Hier dann die Schleife --> 
+    } 
+            <HeaderStart />
 
      {events && events.length > 0 ? (
        <div className="p-8 flex justify-center">
