@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';   // fuer id als Parameter
 import { Link } from 'react-router-dom';
 import Header2 from './../components/Header2'; 
 
+// nowTimeInEnglishUnitTimezone()
+
 const EventDetails = () => {
 
   console.log("Check, 1. Zeile unter const EventDetails");
@@ -51,7 +53,7 @@ console.log(event);
         {/* <h1>Event</h1> */}
         {/* Momentan default w-96 maximum. siehe Tailwind-Doku bei max-width  */}
         {event ? (
-        <div className="card glass w-96 mx-auto">
+        <div className="card glass w-96 mx-auto -mt-24">
           <figure>
             <img
               src="repository-open-graph-tuerkisblau2408a.png"
@@ -59,7 +61,9 @@ console.log(event);
             </figure>
             <div className="card-body">
               <h2 className="card-title">{event.id}</h2>
-              <p className='text-right'><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
+              <p className='text-right'></p>
+                
+
                     <p className='text-right'>{event.location}</p>
                     <h3 className='font-extrabold text-xl'>{event.title}</h3>
                     <p>{event.description}</p>

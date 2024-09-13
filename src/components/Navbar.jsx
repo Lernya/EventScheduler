@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div id="navbar" className="navbar bg-base-300">
+    <div id="navbar" className="navbar bg-base-300 shadow-xl">
       <div className="flex-1">
         <Link to="/">
           <button className="btn btn-ghost text-xl">Events</button>
