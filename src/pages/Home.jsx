@@ -68,7 +68,17 @@ const Home = () => {
               >
                 <li className="px-8 py-4">
                   <p className="text-right">
-                   <strong>{new Date(event.date).toLocaleDateString()}</strong>
+                   {/* <strong>{new Date(event.date).toLocaleDateString()}</strong> */}
+                   <strong>
+                     {new Date(event.date).toLocaleDateString('en-GB', { 
+                                  //  weekday: 'long',
+                                   day: 'numeric', 
+                                   month: 'long', 
+                                   year: 'numeric' 
+                                 })}
+                               
+                   </strong>
+
                   </p>
                   <p className="text-right">{event.location}</p>
                   <h3 className="font-extrabold text-xl">{event.title}</h3>

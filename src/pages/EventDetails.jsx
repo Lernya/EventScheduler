@@ -53,44 +53,32 @@ return (
    
       <Header2 />
       <div id="event">
-        {/* <h1>Event</h1> */}
-        {/* Momentan default w-96 maximum. siehe Tailwind-Doku bei max-width  */}
         
         {event ? (
         <div className="card glass max-w-xl mx-auto -mt-24  ">
-        {/* <div className="card glass w-5/6 mx-auto -mt-24  "> */}
-        {/* <figure>
-            <img
-              src="repository-open-graph-tuerkisblau2408a.png"
-              alt="" />
-            </figure> */}
             <div className="card-body">
               <p className='text-right'></p>
-              {/* <p className='text-right'>{new Date(event.date).toLocaleDateString('en-GB', { 
-                weekday: 'long',
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
-                })} 📅</p> */}
-              {/* <p className='text-right'>{timeInEnglishUnit} 🕔</p> */}
-            <p className='text-left'>📅 {new Date(event.date).toLocaleDateString('en-GB', { 
-              weekday: 'long',
-              day: 'numeric', 
-              month: 'long', 
-              year: 'numeric' 
-            })} </p>
-<p className='text-left'>🕔 
-{new Date(event.date).toLocaleTimeString('en-GB', { 
-  hour: 'numeric', 
-  minute: 'numeric', 
-  timeZone: 'Europe/Berlin', 
-  hourCycle: 'h23' 
-})}h
-</p>
+
+              <p className='text-left card-title font-extrabold '>📅 &nbsp; 
+                {new Date(event.date).toLocaleDateString('en-GB', { 
+                  weekday: 'long',
+                  day: 'numeric', 
+                  month: 'long', 
+                  year: 'numeric' 
+                })} </p>
+              <p className='text-left'>🕔 &nbsp; 
+                {new Date(event.date).toLocaleTimeString('en-GB', { 
+                  hour: 'numeric', 
+                  minute: 'numeric', 
+                  timeZone: 'Europe/Berlin', 
+                  hourCycle: 'h23' 
+                })}h
+                </p>
   
                     <p className='text-right'>{event.location} 🔻</p>
-                    <p className="text-right text-xs"><a href="https://www.openstreetmap.org/#map=16/{event.latitude}/{event.longitude}">{event.latitude} | {event.longitude} 🧭</a></p>
-                    <h3 className='card-title font-extrabold text-xl mt-6'>{event.title}</h3>
+                    <p className="text-right text-xs"><a href={`https://www.openstreetmap.org/#map=16/{event.latitude}/{event.longitude}`}>{event.latitude} | {event.longitude} 🧭</a></p>
+
+                    <h3 className='card-title font-extrabold text-3xl mt-6'>{event.title}</h3>
                     <p>{event.description}</p>
 
                     {/* <div className='flex justify-center'>
