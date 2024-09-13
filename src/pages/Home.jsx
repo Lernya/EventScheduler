@@ -66,7 +66,7 @@ const Home = () => {
                 key={'event-' + event.id}
                 className="card bg-base-100 w-96 shadow-xl my-1 hover:bg-white"
               >
-                <li className="px-8 py-4">
+                <li className="px-10 py-6">
                   <p className="text-right">
                    {/* <strong>{new Date(event.date).toLocaleDateString()}</strong> */}
                    <strong>
@@ -80,8 +80,9 @@ const Home = () => {
                    </strong>
 
                   </p>
-                  <p className="text-right">{event.location}</p>
-                  <h3 className="font-extrabold text-xl">{event.title}</h3>
+                  <p className="text-right text-gray-500">{event.location}</p>
+
+                  <h3 className="font-extrabold text-2xl py-2">{event.title}</h3>
                   <p>{event.description}</p>
                 </li>
               </Link>
