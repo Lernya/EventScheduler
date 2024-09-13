@@ -57,8 +57,9 @@ return (
         {/* Momentan default w-96 maximum. siehe Tailwind-Doku bei max-width  */}
         
         {event ? (
-        <div className="card glass w-96 mx-auto -mt-24  ">
-          {/* <figure>
+        <div className="card glass max-w-xl mx-auto -mt-24  ">
+        {/* <div className="card glass w-5/6 mx-auto -mt-24  "> */}
+        {/* <figure>
             <img
               src="repository-open-graph-tuerkisblau2408a.png"
               alt="" />
@@ -88,11 +89,42 @@ return (
 </p>
   
                     <p className='text-right'>{event.location} 🔻</p>
-                    <p className="text-right text-xs"><a href="https://www.openstreetmap.org/#map=15/{event.latitude}/{event.longitude}">{event.latitude} | {event.longitude} 🧭</a></p>
+                    <p className="text-right text-xs"><a href="https://www.openstreetmap.org/#map=16/{event.latitude}/{event.longitude}">{event.latitude} | {event.longitude} 🧭</a></p>
                     <h3 className='card-title font-extrabold text-xl mt-6'>{event.title}</h3>
                     <p>{event.description}</p>
-                    {/* <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=7.119588553905488%2C50.70637188152956%2C7.122209072113038%2C50.707640740258206&amp;layer=mapnik&amp;marker=50.70700631518635%2C7.120898813009262" className="border"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=50.707006&amp;mlon=7.120899#map=19/50.707006/7.120899">Größere Karte anzeigen</a></small> */}
-<h2 className="text-right mt-20 text-bold text-xs text-gray-400">Event {event.id}</h2>
+
+                    {/* <div className='flex justify-center'>
+                    <div className='flex flex-col'>
+                    <iframe width="425" height="350" 
+                    src={`https://www.openstreetmap.org/export/embed.html?bbox={event.latitude}%2C{event.longitude}%2C{event.latitude}%2C{event.longitude}&amp;layer=mapnik&amp;marker={event.longitude}%2C{event.latitude}`} 
+                    className="border"></iframe><br/>
+                    <small><a href={`https://www.openstreetmap.org/?mlat={event.latitude}&amp;mlon={event.longitude}#map=16/{event.latitude}/{event.longitude}`}>Größere Karte anzeigen</a></small>
+                    </div>
+                    </div> */}
+
+                    {/*                     
+                    <div className='flex justify-center'>
+                      <div className='flex flex-col'>
+                        <iframe width="425" height="350"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox={event.longitude}%2C{event.latitude}%2C{event.longitude}%2C{event.latitude}&amp;layer=mapnik&amp;marker={event.latitude}%2C{event.longitude}"
+                        className="border"></iframe><br/>
+                        <small><a href="https://www.openstreetmap.org/?mlat={event.latitude}&amp;mlon={event.longitude}#map=16/{event.latitude}/7.120899">Größere Karte anzeigen</a></small>
+                      </div>
+                    </div> */}
+
+                    <div className='flex justify-center mt-12'>
+                      <div className='flex flex-col'>
+                        <iframe width="425" height="350"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=7.119588553905488%2C50.70637188152956%2C7.122209072113038%2C50.707640740258206&amp;layer=mapnik&amp;marker=50.70700631518635%2C7.120898813009262"
+                        className="border"></iframe><br/>
+                        <small><a href="https://www.openstreetmap.org/?mlat=50.707006&amp;mlon=7.120899#map=19/50.707006/7.120899">View Larger Map</a></small>
+                      </div>
+                    </div>
+
+
+
+
+                    <h2 className="text-right mt-20 text-bold text-xs text-gray-400">Event {event.id}</h2>
               <div className="card-actions justify-end">
               {/* <Link to={`/`}>
               <button id="event-to-start" className="btn btn-primary">Zur Übersicht</button>
@@ -107,7 +139,7 @@ return (
           <p>Keine Eventdetails vorhanden.</p>
         )}
 
-<section className='mt-10 w-full flex justify-center'>
+<section className='mt-10 w-full flex justify-center mb-24'>
         <div className=' flex flex-col w-full'>
           <div className="text-6xl text-center">📄</div>
           <div  className="text-center m-3">

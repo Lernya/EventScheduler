@@ -62,4 +62,6 @@ color:#ddd;
   #header-start {
     background-image: url(/public/repository-open-graph-tuerkisblau2408a.png);
     height: 240px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
