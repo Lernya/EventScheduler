@@ -88,9 +88,10 @@ return (
 </p>
   
                     <p className='text-right'>{event.location} 🔻</p>
-                    <p className="text-right text-xs">{event.latitude} | {event.longitude} 🧭</p>
+                    <p className="text-right text-xs"><a href="https://www.openstreetmap.org/#map=15/{event.latitude}/{event.longitude}">{event.latitude} | {event.longitude} 🧭</a></p>
                     <h3 className='card-title font-extrabold text-xl mt-6'>{event.title}</h3>
                     <p>{event.description}</p>
+                    {/* <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=7.119588553905488%2C50.70637188152956%2C7.122209072113038%2C50.707640740258206&amp;layer=mapnik&amp;marker=50.70700631518635%2C7.120898813009262" className="border"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=50.707006&amp;mlon=7.120899#map=19/50.707006/7.120899">Größere Karte anzeigen</a></small> */}
 <h2 className="text-right mt-20 text-bold text-xs text-gray-400">Event {event.id}</h2>
               <div className="card-actions justify-end">
               {/* <Link to={`/`}>
