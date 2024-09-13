@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';   // fuer id als Parameter
 import { Link } from 'react-router-dom';
 import Header2 from './../components/Header2'; 
 
+// nowTimeInEnglishUnitTimezone()
+
 const EventDetails = () => {
 
   console.log("Check, 1. Zeile unter const EventDetails");
@@ -10,69 +12,116 @@ const EventDetails = () => {
 const { eventid } = useParams();
 //const  eventid = 2;
 
-  const [event, setEvent] = useState(null);
+const [event, setEvent] = useState(null);
+
+const [status, setStatus] = useState('loading'); // "loading", "success", "error"
+
+
+
+
+useEffect(() => {
+  // const controller = new AbortController();
   
-  const [status, setStatus] = useState('loading'); // "loading", "success", "error"
-
-
-  useEffect(() => {
-    // const controller = new AbortController();
-
-    const fetchEvent = async () => {
-      try {
-        // console.log("Check, fetchEvents");
-        setStatus('loading');
-        // const res = await fetch(`http://localhost:3001/api/events/${id}`, { signal: controller.signal });
-        const res = await fetch(import.meta.env.VITE_API_URL + `/api/events/${eventid}`);   // URL mit http, nicht https!! :-/
-
-        if (!res.ok) throw Error('Fetching failed');
-
-        const data = await res.json();
-        setStatus('success');
-        setEvent(data);
-        console.log("Ergebnis in event", data);
-
-      } catch (error) {
-        console.error(error);
-        setStatus('error');
-      }
-    };
-
-    fetchEvent();
-
-//    return () => controller.abort();
-  }, [eventid]);
+  const fetchEvent = async () => {
+    try {
+      // console.log("Check, fetchEvents");
+      setStatus('loading');
+      // const res = await fetch(`http://localhost:3001/api/events/${id}`, { signal: controller.signal });
+      const res = await fetch(import.meta.env.VITE_API_URL + `/api/events/${eventid}`);   // URL mit http, nicht https!! :-/
+      
+      if (!res.ok) throw Error('Fetching failed');
+      
+      const data = await res.json();
+      setStatus('success');
+      setEvent(data);
+      console.log("Ergebnis in event", data);
+      
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
+  };
+  
+  fetchEvent();
+  
+  //    return () => controller.abort();
+}, [eventid]);
 console.log(event);
-    return (
+
+return (
       <>
    
       <Header2 />
       <div id="event">
         {/* <h1>Event</h1> */}
         {/* Momentan default w-96 maximum. siehe Tailwind-Doku bei max-width  */}
+        
         {event ? (
-        <div className="card glass w-96 mx-auto">
-          <figure>
+        <div className="card glass w-96 mx-auto -mt-24  ">
+          {/* <figure>
             <img
               src="repository-open-graph-tuerkisblau2408a.png"
               alt="" />
-            </figure>
+            </figure> */}
             <div className="card-body">
-              <h2 className="card-title">{event.id}</h2>
-              <p className='text-right'><strong>Datum:</strong> <strong>{new Date(event.date).toLocaleDateString()}</strong></p>
-                    <p className='text-right'>{event.location}</p>
-                    <h3 className='font-extrabold text-xl'>{event.title}</h3>
+              <p className='text-right'></p>
+              {/* <p className='text-right'>{new Date(event.date).toLocaleDateString('en-GB', { 
+                weekday: 'long',
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+                })} 📅</p> */}
+              {/* <p className='text-right'>{timeInEnglishUnit} 🕔</p> */}
+            <p className='text-left'>📅 {new Date(event.date).toLocaleDateString('en-GB', { 
+              weekday: 'long',
+              day: 'numeric', 
+              month: 'long', 
+              year: 'numeric' 
+            })} </p>
+<p className='text-left'>🕔 
+{new Date(event.date).toLocaleTimeString('en-GB', { 
+  hour: 'numeric', 
+  minute: 'numeric', 
+  timeZone: 'Europe/Berlin', 
+  hourCycle: 'h23' 
+})}h
+</p>
+  
+                    <p className='text-right'>{event.location} 🔻</p>
+                    <p className="text-right text-xs">{event.latitude} | {event.longitude} 🧭</p>
+                    <h3 className='card-title font-extrabold text-xl mt-6'>{event.title}</h3>
                     <p>{event.description}</p>
+<h2 className="text-right mt-20 text-bold text-xs text-gray-400">Event {event.id}</h2>
               <div className="card-actions justify-end">
-              <Link to={`/`}>
+              {/* <Link to={`/`}>
               <button id="event-to-start" className="btn btn-primary">Zur Übersicht</button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
+      
+    
+        
          ) : (
           <p>Keine Eventdetails vorhanden.</p>
         )}
+
+<section className='mt-10 w-full flex justify-center'>
+        <div className=' flex flex-col w-full'>
+          <div className="text-6xl text-center">📄</div>
+          <div  className="text-center m-3">
+            {/* // Add Event Button */}
+            <Link to="/">
+              {/* <button id="btn-add-event" className="fixed bottom-8 right-8 btn btn-active btn-neutral"> */}
+              {/* <button id="btn-add-event" className="btn btn-active btn-neutral w-96"> */}
+                <button className='btn btn-active btn-neutral w-96 text-xl h-16 hover:bg-[#058a0a] hover:border-[#047008]'>
+                Go to Overview
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
      </div>
      </>
   );

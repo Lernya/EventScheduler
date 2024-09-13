@@ -26,14 +26,40 @@
     border:1px solid #047008;
   }
 
+  button#btn-add-event:hover {
+    background-color: #058a0a;
+    border:1px solid #047008;
+  }
+
   button#event-to-start {
    margin-top:3rem; 
+   background-color: #111111;
+   border:1px solid #222222;
+
   }
+
+  button#event-to-start:hover {
+    margin-top:3rem; 
+    background-color: #058a0a;
+    border:1px solid #047008;
+ 
+   }
 
   div#event {
     margin-top:3rem;
   }
 
   #noscript {
-    background-image:url(/d2409-eventscheduler/git-EventScheduler/public/repository-open-graph-tuerkisblau2408a.png)!important;
+    background-image:url(/public/repository-open-graph-tuerkisblau2408a.png)!important;
+  }
+
+  #navbar {
+background-color: #111;
+color:#ddd;
+  }
+
+  #header-seite,
+  #header-start {
+    background-image: url(/public/repository-open-graph-tuerkisblau2408a.png);
+    height: 240px;
   }
